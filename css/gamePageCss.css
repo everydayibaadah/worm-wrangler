@@ -1,1 +1,79 @@
- 
+body {
+  background-image: url("../images/soil.jpg");
+  background-size: cover;
+  margin: 0;
+}
+h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  margin: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.board {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.gameBoard {
+  max-width: 700px;
+  max-height: 535px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+}
+
+.hole {
+  width: 150px;
+  height: 150px;
+  margin: 15px 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  /*background-color: #000;*/
+  width: 140px;
+  height: 140px;
+  background-image: url("../images/worms.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  position: absolute;
+  margin: 20px;
+  /* This is likely meant for the worm, not the hole */
+  display: none;
+}
+.scoreBoardText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #623414;
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+}
+
+.buttons {
+  padding: 5px 10px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #edb389;
+  color: #623414;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+}
+.tray {
+  width: 330px;
+  height: 150px;
+  background-color: #fff;
+  margin: 10px;
+  border: 5px solid #edb389;
+  border-radius: 10px;
+}
