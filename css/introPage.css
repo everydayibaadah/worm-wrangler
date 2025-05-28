@@ -80,10 +80,11 @@ h1 {
 }
 
 #volumeSlider {
-  display: block;
+  display: none;
 }
+
 #adjustVolume {
-  display: block;
+  display: none;
 }
 
 .soundDiv {
