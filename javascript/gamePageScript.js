@@ -1,10 +1,19 @@
 let openHand = sessionStorage.getItem("openHand");
+const popUpWindow = document.getElementById("popUpWindow");
+const winMessage = document.getElementById("winMessage");
+const closeButton = document.getElementById("closeButton");
+popUpWindow.style.display = "flex";
+
 let closeHand = sessionStorage.getItem("closeHand");
 cursor.style.backgroundImage = `url("${openHand}")`;
 document.addEventListener("mousedown", function () {
 cursor.style.backgroundImage = `url("${closeHand}")`;
 cursor.style.transform = "rotate(-45deg)";
 });
+winMessage.textContent = "Congratulations, you won! Your score is "
++score +".";
+winMessage.textContent = "You have slipped a bit! Your score is "+ score
++".";
 
 document.addEventListener("mouseup", function () {
 cursor.style.backgroundImage = `url("${openHand}")`;
@@ -41,6 +50,23 @@ if (gameOn && eventObject.target.className === "gameBoard") {
 missWorm();
 }
 });
+closeButton.addEventListener("click", closePopUp);
+function closePopUp() {
+    popUpWindow.style.display = "none";
+
+score = 0;
+misses = 0;
+timeLeft = 20;
+count = 0;
+scoreDisplay.textContent = score;
+missesDisplay.textContent = misses;
+wormCountDisplay.textContent = count;
+timerElement.textContent = "20";
+resetTray();
+startButton.disabled = false;
+homeButton.disabled = false;
+}
+
 
 homeButton.addEventListener("click", function () {
 window.location.href = "index.html";
@@ -82,15 +108,15 @@ return hole;
 
 let timerId;
 function startGame() {
-    score = 0;
-misses = 0;
-timeLeft = 20;
-count = 0;
-scoreDisplay.textContent = score;
-missesDisplay.textContent = misses;
-wormCountDisplay.textContent = count;
-timerElement.textContent = "20";
-resetTray();
+//     score = 0;
+// misses = 0;
+// timeLeft = 20;
+// count = 0;
+// scoreDisplay.textContent = score;
+// missesDisplay.textContent = misses;
+// wormCountDisplay.textContent = count;
+// timerElement.textContent = "20";
+// resetTray();
 gameOn = true;
 startButton.disabled = true;
 homeButton.disabled = true;
@@ -104,30 +130,36 @@ for(i=0; i<holes.length; i++){
 holes[i].removeEventListener("click", missWorm);
 }
 gameOn = false;
-startButton.disabled = false;
-homeButton.disabled = false;
+// startButton.disabled = false;
+// homeButton.disabled = false;
+popUpWindow.style.display = "flex";
 if (count >= minCount) {
-alert("Congratulations, you won! Your score is " + score +".");
+// alert("Congratulations, you won! Your score is " +score +".");
+winMessage.textContent =
+"Congratulations, you won! Your score is " + score +".";
 } else {
-alert("You have slipped a bit! Your score is " + score +".");
+// alert("You have slipped a bit! Your score is "+ score +".");
+winMessage.textContent = "You have slipped a bit! Your score is " +
+score +".";
 }
+
 }, 20000);
 }
 function missWorm() {
-if (misses < maxMisses) {
-misses++;
-missesDisplay.textContent = misses;
+/* Other codes*/
 if (misses >= maxMisses) {
-startButton.disabled = false;
-homeButton.disabled = false;
+// startButton.disabled = false;
+// homeButton.disabled = false;
 gameOn = false;
-alert("Too many misses! You have slipped a bit! Your score is " +
-score +".");
+popUpWindow.style.display = "flex";
+// alert("Too many misses! You have slipped a bit! Your score is "+ score +".");
+winMessage.textContent = "Too many misses! You have slipped a bit! Your score is "+ score +".";
 clearTimeout(timerId);
 clearInterval(timerId1);
 }
 }
-}
+
+
 
 
 
