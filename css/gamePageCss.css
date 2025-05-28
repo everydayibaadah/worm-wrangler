@@ -102,3 +102,28 @@ h1 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
 }
+
+#closeButton {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px auto;
+  width: 100px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#winMessage {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+#gameOver {
+  margin-top: 60px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
