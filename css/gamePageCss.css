@@ -1,8 +1,7 @@
 body {
-  background-image: url("../images/soil.jpg");
+  background-image: url("../image/soil.jpg");
   background-size: cover;
   cursor: none;
-  margin: 0;
 }
 h1 {
   text-align: center;
@@ -13,13 +12,11 @@ h1 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
 .board {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
-
 .gameBoard {
   max-width: 700px;
   max-height: 535px;
@@ -27,23 +24,23 @@ h1 {
   flex-wrap: wrap;
   margin: 0 20px;
 }
-
 .hole {
   width: 150px;
   height: 150px;
   margin: 15px 30px;
   overflow: hidden;
   border-radius: 50%;
-  /*background-color: #000;*/
+  /* background-color: #000; */
+}
+.worm {
   width: 140px;
   height: 140px;
-  background-image: url("../images/worms.png");
+  background-image: url("../image/worms.png");
   background-position: center;
   background-size: cover;
   border-radius: 50%;
   position: absolute;
   margin: 20px;
-  /* This is likely meant for the worm, not the hole */
   display: none;
 }
 .scoreBoardText {
@@ -55,10 +52,9 @@ h1 {
   padding: 10px;
   border-radius: 10px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
-.buttons {
+.button {
   padding: 5px 10px;
   font-size: 25px;
   font-weight: bold;
@@ -68,7 +64,7 @@ h1 {
   cursor: pointer;
   margin-left: 10px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .tray {
   width: 330px;
@@ -78,17 +74,15 @@ h1 {
   border: 5px solid #edb389;
   border-radius: 10px;
 }
-
 .cursor {
   height: 110px;
   width: 100px;
-  background-image: url("../images/openHand1.png");
+  background-image: url("../image/openHand1.png");
   background-size: cover;
   position: fixed;
   pointer-events: none;
   transition: transform 0.1s;
 }
-
 #popUpWindow {
   position: absolute;
   top: 30%;
@@ -100,9 +94,8 @@ h1 {
   display: none;
   flex-direction: column;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
 #closeButton {
   font-size: 20px;
   font-weight: bold;
@@ -115,15 +108,68 @@ h1 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+#closeButton:hover,
+#startButton:hover,
+#homeButton:hover {
+  transform: scale(1.1);
+}
+
 #winMessage {
   margin: 10px;
   font-size: 20px;
   font-weight: bold;
   padding: 0 10px;
 }
+
 #gameOver {
   margin-top: 60px;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
+}
+#glove1:hover {
+  background-image: url(../image/closeHand1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#glove2:hover {
+  background-image: url(../image/closeHand2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#glove3:hover {
+  background-image: url(../image/closeHand3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+#animationEffect {
+  display: flex;
+  height: 50px;
+}
+.aniImage {
+  margin: 5px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+#image1 {
+  animation: movingImage 3s infinite;
+}
+#image3 {
+  animation: movingImage 4s infinite;
+}
+#image3 {
+  animation: movingImage 5s infinite;
+}
+@keyframes movingImage {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 80%;
+  }
 }
