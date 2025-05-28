@@ -60,13 +60,15 @@ let closeHand = sessionStorage.getItem("closeHand");
 
 document.addEventListener("mousedown", function()
 {
-    cursor.style.backgroundImage = 'url("./image/closeHand1.png")';
+    const closeHandImage = closeHand && closeHand.trim() ? closeHand : "./image/closeHand1.png";
+    cursor.style.backgroundImage = `url("${closeHandImage}")`;
     cursor.style.transform = "rotate(-45deg)";
 });
 
 document.addEventListener("mouseup", function()
 {
-    cursor.style.backgroundImage = 'url("./image/openHand1.png")';
+    const openHandImage = openHand && openHand.trim() ? openHand : "./image/openHand1.png";
+    cursor.style.backgroundImage = `url("${openHandImage}")`;
     cursor.style.transform = "none";
 });
 
