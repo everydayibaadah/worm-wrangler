@@ -13,7 +13,7 @@ let timerID;
 
 const holes = document.querySelectorAll(".hole");
 
-var scoreDisplay = document.getElementById("score");
+var scoreDisplay = document.getElementById("scoreDisplay");
 const wormCountDisplay = document.getElementById("wormCount");
 
 let score = 0;
@@ -107,7 +107,7 @@ function startGame()
     startButton.disabled = true;
     homeButton.disabled = true;
     timerID1 = setInterval(updateTimer, 1000);
-    for(i = 0; i < holes.length; i++)
+    for(let i = 0; i < holes.length; i++)
     {
         holes[i].addEventListener("click", missWorm);
     }
@@ -128,9 +128,9 @@ function startGame()
         }
         if(count >= minCount)
         {
-            winMessage.textContent = "Congrats, you did it dumbo... Your score is " + score + "."
+            winMessage.textContent = "Congrats, you did it! Your score is " + score + "."
         } else {
-            winMessage.textContent = "You missed hahhahhah!!! Your score is " + score + ".";
+            winMessage.textContent = "You missed, haha! Your score is " + score + ".";
         }
     }, 20000);
 }
