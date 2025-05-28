@@ -162,8 +162,8 @@ h1 {
 #image3 {
   animation: movingImage 4s infinite;
 }
-#image3 {
-  animation: movingImage 5s infinite;
+#image2 {
+  animation: movingImage 4.5s infinite;
 }
 @keyframes movingImage {
   0% {
