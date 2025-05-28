@@ -88,3 +88,17 @@ h1 {
   pointer-events: none;
   transition: transform 0.1s;
 }
+
+#popUpWindow {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 30%;
+  height: 40%;
+  background-color: rgb(235, 173, 132);
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", "Geneva", "Verdana", "sans-serif";
+}
