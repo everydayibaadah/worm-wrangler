@@ -1,3 +1,10 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #f3c194;
 }
@@ -52,13 +59,13 @@ body {
   }
 }
 #glove1 {
-  background-image: url(../image/openHand1.png);
+  background-image: url(../images/openHand1.png);
 }
 #glove2 {
-  background-image: url(../image/openHand2.png);
+  background-image: url(../images/openHand2.png);
 }
 #glove3 {
-  background-image: url(../image/openHand3.png);
+  background-image: url(../images/openHand3.png);
 }
 /* #goToGameButton {
   padding: 5px 10px;
