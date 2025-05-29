@@ -14,6 +14,8 @@ sessionStorage.setItem("volume", volumeValue);
 soundCheckBox.addEventListener("change", soundCheck);
 volumeSlider.addEventListener("input", volumeCheck);
 
+// Call soundCheck initially to set the correct visibility based on the default checkbox state
+soundCheck();
 
 const glove1 = document.getElementById("glove1");
 const glove2 = document.getElementById("glove2");
