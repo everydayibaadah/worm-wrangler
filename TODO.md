@@ -20,9 +20,9 @@ This file lists potential improvements and new features for the Worm Wrangler ga
   - [x] Appears rarely. (Implemented in `javascript/gamePageScript.js`)
   - [x] Awards significantly more points (e.g., 25 points). (Implemented in `javascript/gamePageScript.js`)
   - [x] Different visual appearance. (Implemented in `css/gamePageCss.css` and `javascript/gamePageScript.js`)
-- [ ] **Time Worm:**
-  - [ ] Adds a few extra seconds to the timer when collected.
-  - [ ] Distinct visual appearance.
+- [x] **Time Worm:** (Implemented in `javascript/gamePageScript.js` and `css/gamePageCss.css`)
+  - [x] Adds a few extra seconds to the timer when collected. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Distinct visual appearance. (Implemented in `css/gamePageCss.css` and `javascript/gamePageScript.js`)
 - [ ] **Bomb/Obstacle:**
   - [ ] Clicking deducts points, reduces time, or counts as multiple misses.
   - [ ] Distinct visual appearance.

@@ -1,6 +1,8 @@
 const GAME_CONFIG = {
     GOLDEN_WORM_CHANCE: 0.1, // 10% chance
     SCORE_PER_GOLDEN_WORM: 25,
+    TIME_WORM_CHANCE: 0.08, // 8% chance (after golden check)
+    TIME_WORM_BONUS_SECONDS: 5,
     difficulties: {
         easy: {
             INITIAL_TIME_LEFT: 30,
@@ -34,8 +36,10 @@ const GAME_CONFIG = {
     get current() {
         const difficulty = sessionStorage.getItem("difficulty") || "medium";
         let config = {...this.difficulties[difficulty]}; // Create a copy
-        config.GOLDEN_WORM_CHANCE = this.GOLDEN_WORM_CHANCE; // Add global golden worm chance
-        config.SCORE_PER_GOLDEN_WORM = this.SCORE_PER_GOLDEN_WORM; // Add global golden worm score
+        config.GOLDEN_WORM_CHANCE = this.GOLDEN_WORM_CHANCE;
+        config.SCORE_PER_GOLDEN_WORM = this.SCORE_PER_GOLDEN_WORM;
+        config.TIME_WORM_CHANCE = this.TIME_WORM_CHANCE;
+        config.TIME_WORM_BONUS_SECONDS = this.TIME_WORM_BONUS_SECONDS;
         return config;
     }
 };
@@ -206,13 +210,18 @@ function popUpWorm()
 
     // Reset previous state
     worm.isGolden = false;
-    worm.classList.remove("golden-worm");
-    worm.removeEventListener("click", collectWorms); // Remove previous listener before adding a new one
+    worm.isTimeWorm = false;
+    worm.classList.remove("golden-worm", "time-worm");
+    worm.removeEventListener("click", collectWorms);
 
-    // Golden worm logic
-    if (Math.random() < currentConfig.GOLDEN_WORM_CHANCE) {
+    // Special worm logic
+    const randomChance = Math.random();
+    if (randomChance < currentConfig.GOLDEN_WORM_CHANCE) {
         worm.isGolden = true;
         worm.classList.add("golden-worm");
+    } else if (randomChance < currentConfig.GOLDEN_WORM_CHANCE + currentConfig.TIME_WORM_CHANCE) { // Ensure it's not also golden
+        worm.isTimeWorm = true;
+        worm.classList.add("time-worm");
     }
 
     worm.style.display = "block";
@@ -220,10 +229,14 @@ function popUpWorm()
     setTimeout(() => {
         worm.style.display = "none";
         worm.removeEventListener("click", collectWorms);
-        // Reset golden state if missed
+        // Reset special states if missed
         if (worm.isGolden) {
             worm.isGolden = false;
             worm.classList.remove("golden-worm");
+        }
+        if (worm.isTimeWorm) {
+            worm.isTimeWorm = false;
+            worm.classList.remove("time-worm");
         }
         if(gameOn && misses < maxMisses)
         {
@@ -276,8 +289,16 @@ function collectWorms(eventObject)
 
     if (wormTarget.isGolden) {
         score += currentConfig.SCORE_PER_GOLDEN_WORM;
-        wormTarget.isGolden = false; // Reset state
+        wormTarget.isGolden = false; 
         wormTarget.classList.remove("golden-worm");
+    } else if (wormTarget.isTimeWorm) {
+        timeLeft += currentConfig.TIME_WORM_BONUS_SECONDS;
+        timerElement.textContent = timeLeft; // Update timer display
+        // Add score for time worm as well, or make it purely a time bonus
+        // For now, let's give it the standard worm score too
+        score += currentConfig.SCORE_PER_WORM; 
+        wormTarget.isTimeWorm = false;
+        wormTarget.classList.remove("time-worm");
     } else {
         score += currentConfig.SCORE_PER_WORM;
     }

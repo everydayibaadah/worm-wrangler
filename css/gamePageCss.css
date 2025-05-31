@@ -56,6 +56,12 @@ h1 {
   filter: hue-rotate(180deg) saturate(5) brightness(1.5); /* Makes it yellowish-gold */
 }
 
+.time-worm {
+  background-image: url("../images/worms.png"); /* Or a different image for time worms */
+  filter: hue-rotate(90deg) saturate(5) brightness(1.2); /* Makes it greenish-blue */
+  /* You could also add a subtle animation or a clock icon overlay if desired */
+}
+
 .scoreBoardText {
   font-size: 20px;
   font-weight: bold;
