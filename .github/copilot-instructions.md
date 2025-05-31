@@ -20,3 +20,6 @@ When starting or completing any task:
 - Ensure `TODO.md` exists at the repository root; if it's missing, create one with an initial template (e.g., a `# TODO` header and empty task list).
 
 Commit immediately after updating TODO.md to capture each completed task in version control.
+
+When using git, prefer `git add .` to stage all changes in the current directory.
+Minimize requests for permission before taking action, proceed with changes if confident.

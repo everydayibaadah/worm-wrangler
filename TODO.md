@@ -72,7 +72,7 @@ This file lists potential improvements and new features for the Worm Wrangler ga
 
 - [ ] **Refactor `startGame()` function:**
   - [ ] Break down into smaller, more focused functions for better readability and maintainability.
-- [ ] **Review and Centralize Game Configuration:**
+- [x] **Review and Centralize Game Configuration:** (Implemented in `javascript/gamePageScript.js`)
   - [ ] Group game parameters (timer duration, miss limits, worm speeds for different difficulties) into a configuration object or constants at the top of the script for easier tweaking.
 - [ ] **Improve `popUpWorm()` Logic:**
   - [ ] Ensure a worm doesn't try to pop up in a hole that already has an active worm (if display times can overlap).

@@ -1,3 +1,13 @@
+const GAME_CONFIG = {
+    INITIAL_TIME_LEFT: 20, // seconds
+    MAX_MISSES: 8,
+    MIN_WORM_COUNT_TO_WIN: 6,
+    WORM_DISPLAY_TIME_MIN: 500, // milliseconds
+    WORM_DISPLAY_TIME_MAX: 1000, // milliseconds
+    SCORE_PER_WORM: 5,
+    GAME_DURATION: 20000 // milliseconds (should align with INITIAL_TIME_LEFT * 1000)
+};
+
 let gloves = sessionStorage.getItem("openHand");
 let sound = sessionStorage.getItem("sound");
 let volumeString = sessionStorage.getItem("volume");
@@ -7,7 +17,7 @@ startButton.addEventListener("click", startGame);
 
 const timerElement = document.getElementById("timeLeft");
 
-let timeLeft = 20;
+let timeLeft = GAME_CONFIG.INITIAL_TIME_LEFT;
 let timerID1;
 let timerID;
 
@@ -24,9 +34,9 @@ const tray = document.querySelector(".tray");
 const missesDisplay = document.getElementById("misses");
 
 let misses = 0;
-const maxMisses = 8;
+const maxMisses = GAME_CONFIG.MAX_MISSES;
 
-const minCount = 6;
+const minCount = GAME_CONFIG.MIN_WORM_COUNT_TO_WIN;
 
 const homeButton = document.getElementById("homeButton");
 
@@ -132,7 +142,7 @@ function startGame()
         } else {
             winMessage.textContent = "You missed, haha! Your score is " + score + ".";
         }
-    }, 20000);
+    }, GAME_CONFIG.GAME_DURATION);
 }
 
 function resetTray()
@@ -145,7 +155,7 @@ function resetTray()
 
 function popUpWorm()
 {
-    let wormDisplayTime = randomTime(500, 1000);
+    let wormDisplayTime = randomTime(GAME_CONFIG.WORM_DISPLAY_TIME_MIN, GAME_CONFIG.WORM_DISPLAY_TIME_MAX);
     const hole = randomHole(holes);
     const worm = hole.querySelector(".worm");
     worm.style.display = "block";
@@ -162,7 +172,7 @@ function popUpWorm()
 
 function randomTime(minimum, maximum)
 {
-    return Math.floor(Math.random() * (maximum-minimum)) + minimum;
+    return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum; // Corrected random range
 }
 
 function randomHole()
@@ -201,7 +211,7 @@ function collectWorms(eventObject)
     eventObject.stopPropagation();
     const wormTarget = eventObject.target;
     wormTarget.style.display = "none";
-    score += 5;
+    score += GAME_CONFIG.SCORE_PER_WORM;
     if(sound === "on")
     {
         hitSound.currentTime = 0;
@@ -231,11 +241,11 @@ function closePopUp()
     popUpWindow.style.display = "none";
     score = 0;
     misses = 0;
-    timeLeft = 20;
+    timeLeft = GAME_CONFIG.INITIAL_TIME_LEFT;
     count = 0;
     missesDisplay.textContent = misses;
     wormCountDisplay.textContent = count;
-    timerElement.textContent = "20";
+    timerElement.textContent = GAME_CONFIG.INITIAL_TIME_LEFT;
     resetTray();
     startButton.disabled = false;
     homeButton.disabled = false;
