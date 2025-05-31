@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worm Wrangler - Changelog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* md-block renders content in a shadow DOM, so direct styling of h1,h2 etc. inside it via global CSS is tricky.
+           However, Bulma's .content class applied to a parent of md-block should provide good default styling.
+           If more specific styling is needed for elements within md-block, it might require ::part() or other shadow DOM styling techniques,
+           or md-block might have its own styling hooks. For now, relying on Bulma's .content class. */
+        #changelog-container .content h1, /* Targeting h1 within .content if md-block is a child */
+        #changelog-container .content h2,
+        #changelog-container .content h3,
+        #changelog-container .content h4,
+        #changelog-container .content h5,
+        #changelog-container .content h6 {
+            /* These might not apply directly if md-block encapsulates styles.
+               Bulma's .title classes are usually applied directly to header elements.
+               md-block should ideally inherit or allow styling. */
+        }
+        md-block { /* Style the block itself if needed */
+            display: block; /* Ensure it behaves like a block element */
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container" id="changelog-container">
+            <a href="index.html" class="button is-link mb-4">Back to Game</a>
+            <h1 class="title is-1 has-text-centered">Changelog</h1>
+            <div class="content"> <!-- Apply Bulma's content class for typography styling -->
+                <md-block id="changelog-content-block" src="CHANGELOG.md">
+                    <p class="has-text-centered">Loading changelog...</p> <!-- Fallback content -->
+                </md-block>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

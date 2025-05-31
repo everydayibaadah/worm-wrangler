@@ -78,3 +78,8 @@ This file lists potential improvements and new features for the Worm Wrangler ga
   - [ ] Ensure a worm doesn't try to pop up in a hole that already has an active worm (if display times can overlap).
 - [ ] **Code Comments:**
   - [ ] Add more comments to explain complex sections of the code or non-obvious logic.
+
+## Project Management
+
+- [x] Create a CHANGELOG.md file to track project changes. (Implemented in /Users/aramb/Documents/GitHub/worm-wrangler/CHANGELOG.md)
+- [x] Create a changelog page on the website that renders CHANGELOG.md. (Implemented in /Users/aramb/Documents/GitHub/worm-wrangler/changelog.html)
