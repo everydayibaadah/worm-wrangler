@@ -1,23 +1,55 @@
 const GAME_CONFIG = {
-    INITIAL_TIME_LEFT: 20, // seconds
-    MAX_MISSES: 8,
-    MIN_WORM_COUNT_TO_WIN: 6,
-    WORM_DISPLAY_TIME_MIN: 500, // milliseconds
-    WORM_DISPLAY_TIME_MAX: 1000, // milliseconds
-    SCORE_PER_WORM: 5,
-    GAME_DURATION: 20000 // milliseconds (should align with INITIAL_TIME_LEFT * 1000)
+    difficulties: {
+        easy: {
+            INITIAL_TIME_LEFT: 30,
+            MAX_MISSES: 10,
+            MIN_WORM_COUNT_TO_WIN: 5,
+            WORM_DISPLAY_TIME_MIN: 700,
+            WORM_DISPLAY_TIME_MAX: 1200,
+            SCORE_PER_WORM: 3,
+            GAME_DURATION: 30000
+        },
+        medium: { // Current default values
+            INITIAL_TIME_LEFT: 20,
+            MAX_MISSES: 8,
+            MIN_WORM_COUNT_TO_WIN: 6,
+            WORM_DISPLAY_TIME_MIN: 500,
+            WORM_DISPLAY_TIME_MAX: 1000,
+            SCORE_PER_WORM: 5,
+            GAME_DURATION: 20000
+        },
+        hard: {
+            INITIAL_TIME_LEFT: 15,
+            MAX_MISSES: 5,
+            MIN_WORM_COUNT_TO_WIN: 8,
+            WORM_DISPLAY_TIME_MIN: 300,
+            WORM_DISPLAY_TIME_MAX: 700,
+            SCORE_PER_WORM: 7,
+            GAME_DURATION: 15000
+        }
+    },
+    // Default to medium if no difficulty is set, or for direct access
+    get current() {
+        const difficulty = sessionStorage.getItem("difficulty") || "medium";
+        return this.difficulties[difficulty];
+    }
 };
 
 let gloves = sessionStorage.getItem("openHand");
 let sound = sessionStorage.getItem("sound");
 let volumeString = sessionStorage.getItem("volume");
 
+// Retrieve selected difficulty and set current game configuration
+const selectedDifficulty = sessionStorage.getItem("difficulty") || "medium";
+let currentConfig = GAME_CONFIG.difficulties[selectedDifficulty];
+
+
 const startButton = document.getElementById("startButton");
 startButton.addEventListener("click", startGame);
 
 const timerElement = document.getElementById("timeLeft");
 
-let timeLeft = GAME_CONFIG.INITIAL_TIME_LEFT;
+let timeLeft = currentConfig.INITIAL_TIME_LEFT;
 let timerID1;
 let timerID;
 
@@ -34,9 +66,9 @@ const tray = document.querySelector(".tray");
 const missesDisplay = document.getElementById("misses");
 
 let misses = 0;
-const maxMisses = GAME_CONFIG.MAX_MISSES;
+const maxMisses = currentConfig.MAX_MISSES;
 
-const minCount = GAME_CONFIG.MIN_WORM_COUNT_TO_WIN;
+const minCount = currentConfig.MIN_WORM_COUNT_TO_WIN;
 
 const homeButton = document.getElementById("homeButton");
 
@@ -106,16 +138,24 @@ function startGame()
 {
     // score = 0;
     // misses = 0;
-    // timeLeft = 20;
+    // timeLeft = 20; // Will be set by currentConfig
     // count = 0;
     // scoreDisplay.textContent = score;
     // missesDisplay.textContent = misses;
     // wormCountDisplay.textContent = count;
-    // timerElement.textContent = "20";
+    // timerElement.textContent = "20"; // Will be set by currentConfig
     // resetTray();
     gameOn = true;
     startButton.disabled = true;
     homeButton.disabled = true;
+
+    // Initialize game state based on difficulty
+    timeLeft = currentConfig.INITIAL_TIME_LEFT;
+    timerElement.textContent = timeLeft;
+    // maxMisses is already set via currentConfig
+    // minCount is already set via currentConfig
+    // SCORE_PER_WORM will be used in collectWorms
+
     timerID1 = setInterval(updateTimer, 1000);
     for(let i = 0; i < holes.length; i++)
     {
@@ -142,7 +182,7 @@ function startGame()
         } else {
             winMessage.textContent = "You missed, haha! Your score is " + score + ".";
         }
-    }, GAME_CONFIG.GAME_DURATION);
+    }, currentConfig.GAME_DURATION);
 }
 
 function resetTray()
@@ -155,7 +195,7 @@ function resetTray()
 
 function popUpWorm()
 {
-    let wormDisplayTime = randomTime(GAME_CONFIG.WORM_DISPLAY_TIME_MIN, GAME_CONFIG.WORM_DISPLAY_TIME_MAX);
+    let wormDisplayTime = randomTime(currentConfig.WORM_DISPLAY_TIME_MIN, currentConfig.WORM_DISPLAY_TIME_MAX);
     const hole = randomHole(holes);
     const worm = hole.querySelector(".worm");
     worm.style.display = "block";
@@ -211,7 +251,7 @@ function collectWorms(eventObject)
     eventObject.stopPropagation();
     const wormTarget = eventObject.target;
     wormTarget.style.display = "none";
-    score += GAME_CONFIG.SCORE_PER_WORM;
+    score += currentConfig.SCORE_PER_WORM;
     if(sound === "on")
     {
         hitSound.currentTime = 0;
@@ -241,11 +281,11 @@ function closePopUp()
     popUpWindow.style.display = "none";
     score = 0;
     misses = 0;
-    timeLeft = GAME_CONFIG.INITIAL_TIME_LEFT;
+    timeLeft = currentConfig.INITIAL_TIME_LEFT;
     count = 0;
     missesDisplay.textContent = misses;
     wormCountDisplay.textContent = count;
-    timerElement.textContent = GAME_CONFIG.INITIAL_TIME_LEFT;
+    timerElement.textContent = currentConfig.INITIAL_TIME_LEFT;
     resetTray();
     startButton.disabled = false;
     homeButton.disabled = false;

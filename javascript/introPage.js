@@ -5,6 +5,10 @@ const adjustVolume = document.getElementById("adjustVolume");
 const goToGameButton = document.getElementById("goToGameButton");
 goToGameButton.addEventListener("click", goToGame);
 
+// Difficulty selection
+const difficultyRadios = document.querySelectorAll('input[name="difficulty"]');
+let selectedDifficulty = "medium"; // Default difficulty
+sessionStorage.setItem("difficulty", selectedDifficulty); // Store default difficulty
 
 let sound = "off";
 let volumeValue = 0;
@@ -54,6 +58,14 @@ function volumeCheck(eventObject)
 
 function goToGame()
 {
+    // Store selected difficulty
+    for (const radio of difficultyRadios) {
+        if (radio.checked) {
+            selectedDifficulty = radio.value;
+            break;
+        }
+    }
+    sessionStorage.setItem("difficulty", selectedDifficulty);
     window.location.href = "gamePage.html";
 }
 

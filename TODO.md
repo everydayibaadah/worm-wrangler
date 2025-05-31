@@ -6,13 +6,13 @@ This file lists potential improvements and new features for the Worm Wrangler ga
 
 ### Difficulty Levels
 
-- [ ] Implement Easy, Medium, Hard difficulty settings.
-  - [ ] Adjust worm pop-up speed based on difficulty.
-  - [ ] Adjust worm display duration based on difficulty.
-  - [ ] Adjust game timer length based on difficulty.
-  - [ ] Adjust maximum allowed misses based on difficulty.
-  - [ ] Adjust number of worms required to win (if applicable) based on difficulty.
-- [ ] Add UI on the intro page to select difficulty.
+- [x] Implement Easy, Medium, Hard difficulty settings. (Implemented in `javascript/gamePageScript.js` and `javascript/introPage.js`)
+  - [x] Adjust worm pop-up speed based on difficulty. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Adjust worm display duration based on difficulty. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Adjust game timer length based on difficulty. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Adjust maximum allowed misses based on difficulty. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Adjust number of worms required to win (if applicable) based on difficulty. (Implemented in `javascript/gamePageScript.js`)
+- [x] Add UI on the intro page to select difficulty. (Implemented in `index.html`)
 
 ### Special Worms/Items
 
