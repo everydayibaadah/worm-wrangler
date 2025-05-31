@@ -8,16 +8,7 @@ body {
 body {
   background-color: #f3c194;
 }
-/* h1 {
-  text-align: center;
-  font-size: 40px;
-  font-weight: bolder;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-} */
-/* .container {
-  display: flex;
-} */
+
 .innerContainer,
 .innerContainer2 {
   width: 50%;
