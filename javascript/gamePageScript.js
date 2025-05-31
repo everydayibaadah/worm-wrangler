@@ -1,4 +1,6 @@
 const GAME_CONFIG = {
+    GOLDEN_WORM_CHANCE: 0.1, // 10% chance
+    SCORE_PER_GOLDEN_WORM: 25,
     difficulties: {
         easy: {
             INITIAL_TIME_LEFT: 30,
@@ -31,7 +33,10 @@ const GAME_CONFIG = {
     // Default to medium if no difficulty is set, or for direct access
     get current() {
         const difficulty = sessionStorage.getItem("difficulty") || "medium";
-        return this.difficulties[difficulty];
+        let config = {...this.difficulties[difficulty]}; // Create a copy
+        config.GOLDEN_WORM_CHANCE = this.GOLDEN_WORM_CHANCE; // Add global golden worm chance
+        config.SCORE_PER_GOLDEN_WORM = this.SCORE_PER_GOLDEN_WORM; // Add global golden worm score
+        return config;
     }
 };
 
@@ -198,11 +203,28 @@ function popUpWorm()
     let wormDisplayTime = randomTime(currentConfig.WORM_DISPLAY_TIME_MIN, currentConfig.WORM_DISPLAY_TIME_MAX);
     const hole = randomHole(holes);
     const worm = hole.querySelector(".worm");
+
+    // Reset previous state
+    worm.isGolden = false;
+    worm.classList.remove("golden-worm");
+    worm.removeEventListener("click", collectWorms); // Remove previous listener before adding a new one
+
+    // Golden worm logic
+    if (Math.random() < currentConfig.GOLDEN_WORM_CHANCE) {
+        worm.isGolden = true;
+        worm.classList.add("golden-worm");
+    }
+
     worm.style.display = "block";
     worm.addEventListener("click", collectWorms);
     setTimeout(() => {
         worm.style.display = "none";
         worm.removeEventListener("click", collectWorms);
+        // Reset golden state if missed
+        if (worm.isGolden) {
+            worm.isGolden = false;
+            worm.classList.remove("golden-worm");
+        }
         if(gameOn && misses < maxMisses)
         {
             popUpWorm();
@@ -251,7 +273,15 @@ function collectWorms(eventObject)
     eventObject.stopPropagation();
     const wormTarget = eventObject.target;
     wormTarget.style.display = "none";
-    score += currentConfig.SCORE_PER_WORM;
+
+    if (wormTarget.isGolden) {
+        score += currentConfig.SCORE_PER_GOLDEN_WORM;
+        wormTarget.isGolden = false; // Reset state
+        wormTarget.classList.remove("golden-worm");
+    } else {
+        score += currentConfig.SCORE_PER_WORM;
+    }
+
     if(sound === "on")
     {
         hitSound.currentTime = 0;

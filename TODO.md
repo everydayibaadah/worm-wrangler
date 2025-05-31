@@ -16,10 +16,10 @@ This file lists potential improvements and new features for the Worm Wrangler ga
 
 ### Special Worms/Items
 
-- [ ] **Golden Worm:**
-  - [ ] Appears rarely.
-  - [ ] Awards significantly more points (e.g., 25 points).
-  - [ ] Different visual appearance.
+- [x] **Golden Worm:** (Implemented in `javascript/gamePageScript.js` and `css/gamePageCss.css`)
+  - [x] Appears rarely. (Implemented in `javascript/gamePageScript.js`)
+  - [x] Awards significantly more points (e.g., 25 points). (Implemented in `javascript/gamePageScript.js`)
+  - [x] Different visual appearance. (Implemented in `css/gamePageCss.css` and `javascript/gamePageScript.js`)
 - [ ] **Time Worm:**
   - [ ] Adds a few extra seconds to the timer when collected.
   - [ ] Distinct visual appearance.
