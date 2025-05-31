@@ -5,66 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worm Wrangler</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/gamePageCss.css">
 
 </head>
 
 <body>
-    <h1>Worm Wrangler</h1>
-    <div class="board">
-        <audio id="hitSound" src="audio/hit.wav"></audio>
-        <audio id="missSound" src="audio/miss.wav"></audio>
-        <audio id="completionSound" src="audio/completion.wav"></audio>
-        <div class="gameBoard">
-            <div class="hole">
-                <div class="worm"></div>
+    <section class="section is-fullheight">
+        <h1>Worm Wrangler</h1>
+        <div class="board">
+            <audio id="hitSound" src="audio/hit.wav"></audio>
+            <audio id="missSound" src="audio/miss.wav"></audio>
+            <audio id="completionSound" src="audio/completion.wav"></audio>
+            <div class="gameBoard">
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
+                <div class="hole">
+                    <div class="worm"></div>
+                </div>
             </div>
-            <div class="hole">
-                <div class="worm"></div>
+            <div class="scoreBoard">
+                <div class="scoreBoardText">Time Left: <span id="timeLeft"> 20 </span></div>
+                <div class="scoreBoardText">Score: <span id="scoreDisplay"> 0 </span></div>
+                <div class="scoreBoardText">Misses: <span id="misses"> 0 </span></div>
+                <div class="scoreBoardText">Worm Count: <span id="wormCount"> 0 </span></div>
+                <button class="button" id="startButton">Start</button>
+                <button class="button" id="homeButton">Home</button>
+                <div class="tray"></div>
             </div>
-            <div class="hole">
-                <div class="worm"></div>
+            <div id="animationEffect">
+                <img src="images/movingWorm1.png" alt="" class="aniImage" id="image1" aria-hidden="true">
+                <img src="images/movingWorm2.png" alt="" class="aniImage" id="image2" aria-hidden="true">
+                <img src="images/movingWorm3.png" alt="" class="aniImage" id="image3" aria-hidden="true">
             </div>
-            <div class="hole">
-                <div class="worm"></div>
+            <div id="popUpWindow">
+                <div id="gameOver">GAME OVER</div>
+                <div id="winMessage"></div>
+                <button id="closeButton">CLOSE</button>
             </div>
-            <div class="hole">
-                <div class="worm"></div>
-            </div>
-            <div class="hole">
-                <div class="worm"></div>
-            </div>
-            <div class="hole">
-                <div class="worm"></div>
-            </div>
-            <div class="hole">
-                <div class="worm"></div>
-            </div>
-            <div class="hole">
-                <div class="worm"></div>
-            </div>
+            <div class="cursor"></div>
         </div>
-        <div class="scoreBoard">
-            <div class="scoreBoardText">Time Left: <span id="timeLeft"> 20 </span></div>
-            <div class="scoreBoardText">Score: <span id="scoreDisplay"> 0 </span></div>
-            <div class="scoreBoardText">Misses: <span id="misses"> 0 </span></div>
-            <div class="scoreBoardText">Worm Count: <span id="wormCount"> 0 </span></div>
-            <button class="button" id="startButton">Start</button>
-            <button class="button" id="homeButton">Home</button>
-            <div class="tray"></div>
-        </div>
-        <div id="animationEffect">
-            <img src="image/movingWorm1.png" alt="" class="aniImage" id="image1">
-            <img src="image/movingWorm2.png" alt="" class="aniImage" id="image2">
-            <img src="image/movingWorm3.png" alt="" class="aniImage" id="image3">
-        </div>
-        <div id="popUpWindow">
-            <div id="gameOver">GAME OVER</div>
-            <div id="winMessage"></div>
-            <button id="closeButton">CLOSE</button>
-        </div>
-        <div class="cursor"></div>
-    </div>
+    </section>
 </body>
 <script src="javascript/gamePageScript.js"></script>
 

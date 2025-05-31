@@ -14,6 +14,8 @@ sessionStorage.setItem("volume", volumeValue);
 soundCheckBox.addEventListener("change", soundCheck);
 volumeSlider.addEventListener("input", volumeCheck);
 
+// Call soundCheck initially to set the correct visibility based on the default checkbox state
+soundCheck();
 
 const glove1 = document.getElementById("glove1");
 const glove2 = document.getElementById("glove2");
@@ -63,21 +65,21 @@ function gloveSelect(eventObject)
         glove1.style.border = "2px solid black";
         glove2.style.border = "0px";
         glove3.style.border = "0px";
-        sessionStorage.setItem("openHand", "image/openHand1.png");
-        sessionStorage.setItem("closeHand", "image/closeHand1.png");
+        sessionStorage.setItem("openHand", "images/openHand1.png");
+        sessionStorage.setItem("closeHand", "images/closeHand1.png");
     } else if(glove === "glove2")
     {
         glove2.style.border = "2px solid black";
         glove1.style.border = "0px";
         glove3.style.border = "0px";
-        sessionStorage.setItem("openHand", "image/openHand2.png");
-        sessionStorage.setItem("closeHand", "image/closeHand2.png");
+        sessionStorage.setItem("openHand", "images/openHand2.png");
+        sessionStorage.setItem("closeHand", "images/closeHand2.png");
     } else
     {
         glove3.style.border = "2px solid black";
         glove1.style.border = "0px";
         glove2.style.border = "0px";
-        sessionStorage.setItem("openHand", "image/openHand3.png");
-        sessionStorage.setItem("closeHand", "image/closeHand3.png");
+        sessionStorage.setItem("openHand", "images/openHand3.png");
+        sessionStorage.setItem("closeHand", "images/closeHand3.png");
     }
 }

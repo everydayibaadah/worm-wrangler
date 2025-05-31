@@ -210,7 +210,7 @@ function collectWorms(eventObject)
     count++;
     wormCountDisplay.textContent = count;
     const trayIMG = document.createElement("img");
-    trayIMG.src = "image/wormtray.png";
+    trayIMG.src = "images/wormtray.png";
     trayIMG.alt = "Worm";
     tray.appendChild(trayIMG);
     scoreDisplay.textContent = score;
