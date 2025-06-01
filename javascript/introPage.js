@@ -36,7 +36,7 @@ startGameButton.addEventListener("click", function() {
     if (startGameButton.disabled) {
         // Optionally, you could show a more prominent message here instead of just relying on the tooltip
         // For example: alert("Please select a glove to start!");
-        return; 
+        return;
     }
     goToGame();
 });

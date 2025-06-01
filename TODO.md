@@ -34,6 +34,8 @@ This file lists potential improvements and new features for the Worm Wrangler ga
   - [ ] Track consecutive successful worm collections.
   - [ ] Award bonus points for reaching combo milestones.
   - [ ] Visual/audio feedback for combos.
+    - [ ] Design visual feedback for combos (e.g., "Combo x3!" graphic, particle effects).
+    - [ ] Create a sound effect for achieving/increasing combos.
 - [ ] **Accuracy Bonus:**
   - [ ] Calculate accuracy (hits vs. misses) at the end of the game.
   - [ ] Award bonus points for high accuracy.
@@ -53,11 +55,14 @@ This file lists potential improvements and new features for the Worm Wrangler ga
 
 - [ ] **Enhanced Miss Feedback:**
   - [ ] Add a visual cue (e.g., screen flash, "MISS!" text animation) when a miss occurs.
+  - [ ] Consider if a specific "MISS!" image graphic is needed or if CSS/JS animation is sufficient.
 - [ ] **Worm Animations:**
   - [ ] Animate worms peeking up and hiding instead of instant appear/disappear.
-  - [ ] Utilize the existing `movingWorm` images in `animationEffect` or create new sprites.
+  - [ ] Utilize the existing `movingWorm` images in `animationEffect` or create new sprites (e.g., a sequence for peeking, visible, hiding).
 - [ ] **Sound Design:**
   - [ ] Add unique sound effects for special worms/items.
+    - [ ] Sound effect for Golden Worm collection.
+    - [ ] Sound effect for Time Worm collection.
   - [ ] Add a sound cue when the game timer is low (e.g., last 5 seconds).
   - [ ] Create and integrate a sound effect for when a bomb is clicked.
 
