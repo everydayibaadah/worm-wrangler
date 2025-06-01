@@ -62,6 +62,15 @@ h1 {
   /* You could also add a subtle animation or a clock icon overlay if desired */
 }
 
+.bomb-item {
+  background-image: url("../images/intro.png"); /* Replace with a bomb image if available */
+  /* For now, using a placeholder and making it visually distinct */
+  background-size: contain; /* Or cover, depending on the image */
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.5); /* Dark and desaturated */ 
+}
+
 .scoreBoardText {
   font-size: 20px;
   font-weight: bold;
