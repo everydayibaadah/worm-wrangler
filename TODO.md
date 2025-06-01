@@ -69,11 +69,11 @@ This file lists potential improvements and new features for the Worm Wrangler ga
   - [ ] Implement a way to pause and resume the game.
   - [ ] Ensure the timer and game state are correctly handled.
 - [ ] **Instructions/How to Play:**
-  - [ ] Add a "How to Play" section or a dedicated page accessible from the home screen.
-  - [ ] Explain game objectives, controls, difficulty levels, and special items.
+  - [x] Add a "How to Play" section or a dedicated page accessible from the home screen. (Implemented in `index.html`)
+  - [x] Explain game objectives, controls, difficulty levels, and special items. (Implemented in `index.html`)
 - [ ] **Glove Selection Requirement:**
-  - [ ] Disable the "Start Game" button on the intro page until a glove is selected.
-  - [ ] Display a tooltip or message (e.g., "Please select a glove to start!") if the user tries to start without selecting a glove.
+  - [x] Disable the "Start Game" button on the intro page until a glove is selected. (Implemented in `javascript/introPage.js`)
+  - [x] Display a tooltip or message (e.g., "Please select a glove to start!") if the user tries to start without selecting a glove. (Implemented in `javascript/introPage.js`)
 
 ## Code & Technical Refinements
 
