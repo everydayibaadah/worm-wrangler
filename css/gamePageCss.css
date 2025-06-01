@@ -68,7 +68,7 @@ h1 {
   background-size: contain; /* Or cover, depending on the image */
   background-repeat: no-repeat;
   background-position: center;
-  filter: grayscale(100%) brightness(0.5); /* Dark and desaturated */ 
+  filter: grayscale(100%) brightness(0.5); /* Dark and desaturated */
 }
 
 .scoreBoardText {
