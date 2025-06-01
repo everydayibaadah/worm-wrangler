@@ -11,70 +11,88 @@
 </head>
 
 <body>
-    <section class="section is-fullheight">
-        <h1 class="title is-2 has-text-centered"> Worm Wrangler </h1>
+    <section class="section">
         <div class="container">
-            <div class="columns">
-                <div class="column innerContainer1">
-                    <img src="images/intro.png" alt="gameimage" width="600" height="495">
+            <h1 class="title is-1 has-text-centered game-title"> Worm Wrangler </h1>
+            <div class="columns is-centered">
+                <div class="column is-half-desktop is-full-tablet">
+                    <div class="game-showcase has-text-centered">
+                        <img src="images/intro.png" alt="Worm Wrangler Game Image" class="game-image">
+                    </div>
                 </div>
-                <div class="column innerContainer2">
-                    <div class="gloveCustomizationArea">
-                        <p class="subtitle"> Choose your gloves: </p>
-                        <div class="gloves">
-                            <div class="gloveImage" id="glove1"></div>
-                            <div class="gloveImage" id="glove2"></div>
-                            <div class="gloveImage" id="glove3"></div>
+                <div class="column is-half-desktop is-full-tablet">
+                    <div class="box selection-box">
+                        <div class="field">
+                            <label class="label has-text-centered">Choose your gloves:</label>
+                            <div class="control has-text-centered">
+                                <div class="gloves-container">
+                                    <div class="glove-option" id="glove1"></div>
+                                    <div class="glove-option" id="glove2"></div>
+                                    <div class="glove-option" id="glove3"></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="difficultySelectionArea field">
-                        <label class="label">Choose difficulty:</label>
-                        <div class="control">
-                            <label class="radio">
-                                <input type="radio" name="difficulty" value="easy" checked>
-                                Easy
+
+                        <div class="field">
+                            <label class="label has-text-centered">Choose difficulty:</label>
+                            <div class="control has-text-centered difficulty-options">
+                                <label class="radio">
+                                    <input type="radio" name="difficulty" value="easy" checked>
+                                    Easy
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="difficulty" value="medium">
+                                    Medium
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="difficulty" value="hard">
+                                    Hard
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field has-text-centered">
+                            <button id="startGame" class="button is-primary is-large start-game-button"
+                                title="Please select a glove first!">Go to game</button>
+                        </div>
+                        <div class="field sound-controls-container">
+                            <label class="checkbox sound-toggle">
+                                <input type="checkbox" id="soundCheckBox">
+                                Sound
                             </label>
-                            <label class="radio">
-                                <input type="radio" name="difficulty" value="medium">
-                                Medium
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="difficulty" value="hard">
-                                Hard
-                            </label>
+                            <div id="volumeControlArea" class="is-hidden">
+                                <label for="volumeSlider" class="label volume-label">Volume:</label>
+                                <input type="range" min="0" max="10" value="5" class="slider is-fullwidth"
+                                    id="volumeSlider">
+                            </div>
+                        </div>
+                        <div class="has-text-centered">
+                            <button id="changelogButton" class="button is-link is-outlined">View Changelog</button>
                         </div>
                     </div>
-                    <div class="goToGameButtonDiv">
-                        <button id="goToGameButton" class="button is-primary is-medium">Go to game</button>
-                    </div>
-                    <div class="soundDiv field is-grouped is-grouped-multiline">
-                        <div class="control">
-                            <label class="label">sound:</label>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-three-quarters-desktop is-full-tablet">
+                    <div class="box how-to-play-box">
+                        <h2 class="title is-4 has-text-centered">How to Play</h2>
+                        <div class="content">
+                            <p><strong>Objective:</strong> Catch as many worms as you can before time runs out or you
+                                miss too many!</p>
+                            <ul>
+                                <li>Click on the worms as they pop out of the holes.</li>
+                                <li>Different difficulty levels (Easy, Medium, Hard) change the game speed, timer, and
+                                    miss limits.</li>
+                                <li><strong>Golden Worms:</strong> Rare and worth extra points!</li>
+                                <li><strong>Time Worms:</strong> Catch these to add a few precious seconds to your
+                                    timer.</li>
+                                <li><strong>Bombs:</strong> Avoid clicking these! They'll cost you points and misses.
+                                </li>
+                            </ul>
+                            <p class="has-text-centered">Select your glove, choose your difficulty, and start wrangling!
+                            </p>
                         </div>
-                        <div class="control">
-                            <input type="checkbox" aria-label="Toggle sound" id="soundCheckBox">
-                        </div>
-                        <div class="control">
-                            <label class="label" id="adjustVolume">Adjust volume:</label>
-                        </div>
-                        <div class="control">
-                            <input type="range" min="0" max="10" value="5" aria-label="Adjust volume" id="volumeSlider">
-                        </div>
-                    </div>
-                    <div class="how-to-play">
-                        <h2>How to Play</h2>
-                        <p><strong>Objective:</strong> Catch as many worms as you can before time runs out or you miss
-                            too many!</p>
-                        <ul>
-                            <li>Click on the worms as they pop out of the holes.</li>
-                            <li>Different difficulty levels (Easy, Medium, Hard) change the game speed, timer, and miss
-                                limits.</li>
-                            <li><strong>Golden Worms:</strong> Rare and worth extra points!</li>
-                            <li><strong>Time Worms:</strong> Catch these to add a few precious seconds to your timer.
-                            </li>
-                            <li><strong>Bombs:</strong> Avoid clicking these! They'll cost you points and misses.</li>
-                        </ul>
-                        <p>Select your glove, choose your difficulty, and start wrangling!</p>
                     </div>
                 </div>
             </div>
@@ -83,87 +101,3 @@
 </body>
 
 </html>
-
-<style>
-    body {
-        background-color: #f4f4f9;
-        font-family: 'Arial', sans-serif;
-        color: #333;
-    }
-
-    .title {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        font-size: 3rem;
-        color: #2c3e50;
-    }
-
-    .subtitle {
-        font-size: 1.5rem;
-        color: #34495e;
-    }
-
-    .gloveCustomizationArea,
-    .difficultySelectionArea,
-    .goToGameButtonDiv,
-    .soundDiv,
-    .how-to-play {
-        margin-bottom: 20px;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .gloveImage {
-        display: inline-block;
-        width: 100px;
-        height: 100px;
-        margin-right: 10px;
-        background-size: cover;
-        cursor: pointer;
-        border: 2px solid transparent;
-        border-radius: 4px;
-    }
-
-    .gloveImage:hover {
-        border-color: #3498db;
-    }
-
-    .button {
-        background-color: #e74c3c;
-        color: white;
-        font-size: 1.25rem;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .button:hover {
-        background-color: #c0392b;
-    }
-
-    .how-to-play {
-        margin-top: 30px;
-        padding: 15px;
-        background-color: rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        text-align: left;
-    }
-
-    .how-to-play h2 {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .how-to-play ul {
-        list-style-position: inside;
-        padding-left: 0;
-    }
-
-    .how-to-play li {
-        margin-bottom: 5px;
-    }
-</style>

@@ -1,7 +1,6 @@
 const soundCheckBox = document.getElementById("soundCheckBox");
 const volumeSlider = document.getElementById("volumeSlider");
-const adjustVolume = document.getElementById("adjustVolume");
-
+const volumeControlArea = document.getElementById("volumeControlArea"); // Get the volume control area
 const startGameButton = document.getElementById("startGame"); // Changed from goToGameButton
 // Add a title attribute for the tooltip
 startGameButton.title = "Please select a glove first!";
@@ -23,13 +22,11 @@ volumeSlider.addEventListener("input", volumeCheck);
 soundCheck();
 checkGloveSelection(); // Check initially if a glove is selected
 
-const glove1 = document.getElementById("glove1");
-const glove2 = document.getElementById("glove2");
-const glove3 = document.getElementById("glove3");
+const gloveOptions = document.querySelectorAll(".glove-option"); // Select all glove options
 
-glove1.addEventListener("click", gloveSelect);
-glove2.addEventListener("click", gloveSelect);
-glove3.addEventListener("click", gloveSelect);
+gloveOptions.forEach(glove => {
+    glove.addEventListener("click", gloveSelect);
+});
 
 // Add event listener to the start game button
 startGameButton.addEventListener("click", function() {
@@ -42,23 +39,26 @@ startGameButton.addEventListener("click", function() {
 });
 
 
-function soundCheck()
-{
-    if(soundCheckBox.checked)
-    {
-        volumeSlider.style.display = "block";
-        adjustVolume.style.display = "block";
+function soundCheck() {
+    if (soundCheckBox.checked) {
+        volumeControlArea.classList.remove("is-hidden"); // Show volume controls
         sound = "on";
         sessionStorage.setItem("sound", sound);
-        volumeValue = "5";
-        sessionStorage.setItem("volume", volumeValue);
+        // Ensure volume is set if it wasn't before, or use stored/default
+        if (!sessionStorage.getItem("volume")) {
+            volumeValue = "5"; // Default volume when sound is turned on
+            sessionStorage.setItem("volume", volumeValue);
+            volumeSlider.value = volumeValue;
+        } else {
+            volumeValue = sessionStorage.getItem("volume");
+            volumeSlider.value = volumeValue;
+        }
     } else {
-        volumeSlider.style.display = "none";
-        adjustVolume.style.display = "none";
+        volumeControlArea.classList.add("is-hidden"); // Hide volume controls
         sound = "off";
         sessionStorage.setItem("sound", sound);
-        volumeValue = "0";
-        sessionStorage.setItem("volume", volumeValue);
+        // volumeValue = "0"; // No need to set volume to 0 if sound is off, retain previous setting
+        // sessionStorage.setItem("volume", volumeValue);
     }
 }
 
@@ -92,30 +92,28 @@ function goToGame()
     window.location.href = "gamePage.html";
 }
 
-function gloveSelect(eventObject)
-{
-    const glove = eventObject.target.id;
-    if(glove === "glove1")
-    {
-        glove1.style.border = "2px solid black";
-        glove2.style.border = "0px";
-        glove3.style.border = "0px";
+function gloveSelect(eventObject) {
+    // Remove 'selected-glove' class from all options
+    gloveOptions.forEach(opt => opt.classList.remove("selected-glove"));
+    // Add 'selected-glove' class to the clicked option
+    eventObject.target.classList.add("selected-glove");
+
+    const gloveId = eventObject.target.id;
+    if (gloveId === "glove1") {
         sessionStorage.setItem("openHand", "images/openHand1.png");
         sessionStorage.setItem("closeHand", "images/closeHand1.png");
-    } else if(glove === "glove2")
-    {
-        glove2.style.border = "2px solid black";
-        glove1.style.border = "0px";
-        glove3.style.border = "0px";
+    } else if (gloveId === "glove2") {
         sessionStorage.setItem("openHand", "images/openHand2.png");
         sessionStorage.setItem("closeHand", "images/closeHand2.png");
-    } else
-    {
-        glove3.style.border = "2px solid black";
-        glove1.style.border = "0px";
-        glove2.style.border = "0px";
+    } else if (gloveId === "glove3") {
         sessionStorage.setItem("openHand", "images/openHand3.png");
         sessionStorage.setItem("closeHand", "images/closeHand3.png");
     }
     checkGloveSelection(); // Check after a glove is selected
 }
+
+// Add listener for changelog button
+const changelogButton = document.getElementById("changelogButton");
+changelogButton.addEventListener("click", () => {
+    window.location.href = "changelog.html";
+});

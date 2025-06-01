@@ -3,52 +3,70 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-body {
-  background-color: #f3c194;
-}
-
-.innerContainer,
-.innerContainer2 {
-  width: 50%;
-}
-.gloveCustomizationArea {
-  display: flex;
-  flex-direction: column;
-  width: 85%;
-  height: 43%;
-  margin: 10px;
-}
-#customGloves {
-  font-size: 30px;
-  font-weight: bolder;
+  background-color: #f3c194; /* Restored background color */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 10px 0;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Consistent font */
 }
-.gloves {
+
+.section {
+  padding: 2rem 1.5rem; /* Add some padding to the main section */
+}
+
+.game-title {
+  color: #d2691e; /* Warm, earthy color for the title */
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.game-showcase .game-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+
+.selection-box,
+.how-to-play-box {
+  background-color: #fff8e1; /* Creamy background for boxes */
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  margin-top: 1rem; /* Add some space between elements */
+}
+
+.label {
+  color: #8b4513; /* Darker brown for labels */
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.gloves-container {
   display: flex;
-  border: 5px solid #db7a91;
-  width: 85%;
-  height: 85%;
-  border-radius: 20px;
+  justify-content: center; /* Center gloves */
+  align-items: center;
+  margin-bottom: 1.5rem; /* Space below gloves */
+  gap: 15px; /* Space between gloves */
 }
-.gloveImage {
-  margin: 0 20px;
-  width: 30%;
+
+.glove-option {
+  width: 80px; /* Slightly smaller gloves */
+  height: 80px;
+  background-size: contain; /* Ensure full image is visible */
   background-repeat: no-repeat;
-  background-size: cover;
-  animation: gloveAnimation 10s infinite;
+  background-position: center;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.2s ease;
 }
-@keyframes gloveAnimation {
-  from {
-    transform: rotateY(360deg);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
+
+.glove-option:hover,
+.glove-option.selected-glove {
+  border-color: #d2691e; /* Highlight color */
+  transform: scale(1.1);
 }
+
+/* Specific glove images */
 #glove1 {
   background-image: url(../images/openHand1.png);
 }
@@ -59,27 +77,98 @@ body {
   background-image: url(../images/openHand3.png);
 }
 
-#goToGameButton:hover {
-  transform: scale(1.1, 1.1);
+.difficulty-options .radio {
+  margin: 0 0.5rem; /* Space out radio buttons */
+  color: #8b4513;
 }
-.soundText {
-  font-size: 30px;
-  font-weight: bolder;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  vertical-align: middle;
+
+.difficulty-options input[type="radio"] {
+  margin-right: 0.3rem;
 }
-#volumeSlider {
+
+.start-game-button {
+  background-color: #e74c3c;
+  border-color: transparent;
+  color: white;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.start-game-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.start-game-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.sound-controls-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #fdf5e6; /* Lighter cream for sound controls */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Stack sound toggle and volume */
+  align-items: center;
+}
+
+.sound-toggle {
+  color: #8b4513;
+  margin-bottom: 0.75rem; /* Space between checkbox and slider */
+}
+
+#volumeControlArea {
+  width: 80%; /* Control width of volume slider area */
+  text-align: center;
+}
+
+.volume-label {
+  margin-bottom: 0.5rem;
   display: block;
 }
-#adjustVolume {
-  display: block;
+
+.how-to-play-box .title {
+  color: #d2691e;
+  margin-bottom: 1rem;
 }
-.soundDiv {
-  margin: 10px;
+
+.how-to-play-box .content ul {
+  list-style: disc;
+  margin-left: 20px;
 }
-#soundCheckBox {
-  height: 25px;
-  width: 25px;
-  vertical-align: middle;
+
+.how-to-play-box .content p,
+.how-to-play-box .content li {
+  color: #5d4037; /* Dark brown for text for readability */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .game-title {
+    font-size: 2rem;
+  }
+  .selection-box,
+  .how-to-play-box {
+    padding: 1.5rem;
+  }
+  .gloves-container {
+    gap: 10px;
+  }
+  .glove-option {
+    width: 70px;
+    height: 70px;
+  }
+  .start-game-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Ensure volume control area is hidden by default via CSS */
+#volumeControlArea.is-hidden {
+  display: none;
 }
