@@ -311,7 +311,7 @@ function missWorm()
             // homeButton.disabled = false;
             gameOn = false;
             popUpWindow.style.display = "flex";
-            winMessage.textContent = "Bro Stop missing anyways you lost... Your score is " + score + ".";
+            winMessage.textContent = "Game Over: Too many misses! Your score is " + score + ".";
             clearTimeout(timerID);
             clearInterval(timerID1);
         }
