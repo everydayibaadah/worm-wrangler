@@ -35,7 +35,12 @@ This file lists potential improvements and new features for the Worm Wrangler ga
   - [ ] Award bonus points for reaching combo milestones.
   - [ ] Visual/audio feedback for combos.
     - [ ] Design visual feedback for combos (e.g., "Combo x3!" graphic, particle effects).
+      - [ ] **Asset:** "Combo X!" graphic.
+          - **Image Generation Prompt:** `Dynamic "COMBO X[Count]!" text graphic for a game score multiplier. Style: Energetic, slightly fiery or electric, with a sense of achievement. Color: Bright orange/yellow with a darker outline. Font: Playful but clear. Background: Transparent. Provide versions for X2, X3, X4, X5.`
+      - [ ] **Asset (if image-based):** Particle effect sprites.
+          - **Image Generation Prompt:** `Sprite sheet of small, sparkling particle effects for a game combo bonus. Types: Golden starbursts, shimmering glints, small colorful sparks. Animation: Burst, linger, and fade. Background: Transparent.`
     - [ ] Create a sound effect for achieving/increasing combos.
+      - **Audio Generation Prompt:** `Satisfying, escalating sound effect for achieving/increasing a combo streak. Characteristics: Could be a series of ascending musical notes, a 'power-up' type of sound that layers or becomes more complex with each combo increment. Initial combo ~0.5s, subsequent additions shorter and brighter.`
 - [ ] **Accuracy Bonus:**
   - [ ] Calculate accuracy (hits vs. misses) at the end of the game.
   - [ ] Award bonus points for high accuracy.
@@ -56,15 +61,23 @@ This file lists potential improvements and new features for the Worm Wrangler ga
 - [ ] **Enhanced Miss Feedback:**
   - [ ] Add a visual cue (e.g., screen flash, "MISS!" text animation) when a miss occurs.
   - [ ] Consider if a specific "MISS!" image graphic is needed or if CSS/JS animation is sufficient.
+    - [ ] **Asset (if image-based):** "MISS!" graphic.
+        - **Image Generation Prompt:** `Create a bold, impactful "MISS!" text graphic for a game. Style: Cartoonish, slightly distressed or with a motion blur effect. Color: Bright red with a white or yellow outline. Background: Transparent.`
 - [ ] **Worm Animations:**
   - [ ] Animate worms peeking up and hiding instead of instant appear/disappear.
   - [ ] Utilize the existing `movingWorm` images in `animationEffect` or create new sprites (e.g., a sequence for peeking, visible, hiding).
+    - [ ] **Asset (if new sprites needed):** Worm animation sprite sheet.
+        - **Image Generation Prompt:** `Pixel art sprite sheet for a friendly cartoon worm character for a 2D game. Sequence: 1. Worm partially peeking out of a hole (eyes visible). 2. Worm fully emerged from hole. 3. Worm starting to retreat into hole. 4. Worm almost fully retreated. Style: Cute, simple, earthy tones. Background: Transparent.`
 - [ ] **Sound Design:**
   - [ ] Add unique sound effects for special worms/items.
     - [ ] Sound effect for Golden Worm collection.
+      - **Audio Generation Prompt:** `Short (1-1.5s), magical, rewarding sound effect for collecting a rare "Golden Worm". Characteristics: Bright, positive, a distinct 'chime' or 'sparkle' with a hint of high value. Example: A clear, ascending bell tone with a subtle shimmer.`
     - [ ] Sound effect for Time Worm collection.
+      - **Audio Generation Prompt:** `Sound effect (1-2s) for collecting a "Time Worm" that adds time to a game clock. Characteristics: A gentle, positive 'swoosh', 'tick-tock acceleration', or a soft 'chime' with a slight temporal distortion or echo. Should feel beneficial and slightly ethereal.`
   - [ ] Add a sound cue when the game timer is low (e.g., last 5 seconds).
+    - **Audio Generation Prompt:** `Tense, rhythmic ticking sound effect for a game timer running low (last 5-10 seconds). Characteristics: Clear 'tick-tock' that gradually increases in speed or pitch to build urgency. Should be loopable or a segment that can be repeated effectively.`
   - [ ] Create and integrate a sound effect for when a bomb is clicked.
+    - **Audio Generation Prompt:** `Short, impactful negative sound effect (0.5-1s) for clicking a bomb/obstacle in a game. Characteristics: A dull 'thud', a muffled 'explosion', or a 'sizzle-pop' indicating a penalty. Avoid overly harsh or loud sounds, but clearly negative.`
 
 ## UI/UX Improvements
 
