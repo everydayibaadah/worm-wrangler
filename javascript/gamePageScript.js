@@ -18,15 +18,14 @@ const wormCountDisplay = document.getElementById("wormCount");
 
 let score = 0;
 let count = 0;
+let totalWormsShown = 0;
 
 const tray = document.querySelector(".tray");
 
 const missesDisplay = document.getElementById("misses");
 
 let misses = 0;
-const maxMisses = 8;
 
-const minCount = 6;
 
 const homeButton = document.getElementById("homeButton");
 
@@ -113,24 +112,22 @@ function startGame()
     }
     popUpWorm();
     timerID = setTimeout(() => {
-        alert("Game Over! :(");
         for(i = 0; i < holes.length; i++)
         {
             holes[i].removeEventListener("click", missWorm);
         }
         gameOn = false;
-        // startButton.disabled = false;
-        // homeButton.disabled = false;
         popUpWindow.style.display = "flex";
         if(sound === "on")
         {
             completionSound.play();
         }
-        if(count >= minCount)
+        const catchRate = totalWormsShown > 0 ? (count / totalWormsShown) : 0;
+        if(catchRate >= 0.5)
         {
-            winMessage.textContent = "Congrats, you did it! Your score is " + score + "."
+            winMessage.textContent = "Congratulations! You caught " + Math.round(catchRate * 100) + "% of the worms! Your score is " + score + "."
         } else {
-            winMessage.textContent = "You missed, haha! Your score is " + score + ".";
+            winMessage.textContent = "You only caught " + Math.round(catchRate * 100) + "% of the worms. Better luck next time! Your score is " + score + ".";
         }
     }, 20000);
 }
@@ -145,15 +142,20 @@ function resetTray()
 
 function popUpWorm()
 {
+    totalWormsShown++;
     let wormDisplayTime = randomTime(500, 1000);
     const hole = randomHole(holes);
     const worm = hole.querySelector(".worm");
     worm.style.display = "block";
     worm.addEventListener("click", collectWorms);
     setTimeout(() => {
+        if (worm.style.display === "block") { // It was not clicked, so it's a miss.
+            misses++;
+            missesDisplay.textContent = misses;
+        }
         worm.style.display = "none";
         worm.removeEventListener("click", collectWorms);
-        if(gameOn && misses < maxMisses)
+        if(gameOn)
         {
             popUpWorm();
         }
@@ -179,21 +181,8 @@ function missWorm()
         missSound.currentTime = 0;
         missSound.play();
     }
-    if(misses < maxMisses)
-    {
-        misses++;
-        missesDisplay.textContent = misses;
-        if(misses >= maxMisses)
-        {
-            // startButton.disabled = false;
-            // homeButton.disabled = false;
-            gameOn = false;
-            popUpWindow.style.display = "flex";
-            winMessage.textContent = "Bro Stop missing anyways you lost... Your score is " + score + ".";
-            clearTimeout(timerID);
-            clearInterval(timerID1);
-        }
-    }
+    misses++;
+    missesDisplay.textContent = misses;
 }
 
 function collectWorms(eventObject)
@@ -233,6 +222,7 @@ function closePopUp()
     misses = 0;
     timeLeft = 20;
     count = 0;
+    totalWormsShown = 0;
     missesDisplay.textContent = misses;
     wormCountDisplay.textContent = count;
     timerElement.textContent = "20";
