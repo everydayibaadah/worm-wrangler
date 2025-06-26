@@ -127,7 +127,7 @@ function startGame()
         {
             winMessage.textContent = "Congratulations! You caught " + Math.round(catchRate * 100) + "% of the worms! Your score is " + score + "."
         } else {
-            winMessage.textContent = "You only caught " + Math.round(catchRate * 100) + "% of the worms. Better luck next time! Your score is " + score + ".";
+            winMessage.textContent = "You only caught " + Math.round(catchRate * 100) + "% of the worms. Your score is " + score + ".";
         }
     }, 20000);
 }
